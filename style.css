@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Outfit', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
@@ -15,10 +15,10 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.97);
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
     text-align: center;
     max-width: 500px;
     width: 100%;
@@ -26,61 +26,209 @@ body {
 
 h1 {
     font-size: 2.5rem;
+    font-weight: 700;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .tagline {
-    color: #666;
-    margin-bottom: 30px;
+    color: #888;
+    margin-bottom: 28px;
     font-size: 1rem;
+    font-weight: 300;
 }
 
+/* ── Search Section ── */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#city-input {
+    flex: 1;
+    padding: 13px 20px;
+    border-radius: 50px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    color: #333;
+}
+
+#city-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+}
+
+#search-btn {
+    padding: 13px 26px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+
+#search-btn:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+#search-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ── Weather Display ── */
 #weather-display {
-    margin-top: 30px;
+    margin-top: 10px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.loading {
-    color: #667eea;
-    font-size: 1.1rem;
+/* ── Welcome Message ── */
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 30px;
+    color: #aaa;
+    font-size: 1.05rem;
 }
 
+.welcome-icon {
+    font-size: 3rem;
+    opacity: 0.6;
+}
+
+/* ── Weather Info ── */
 .weather-info {
-    animation: fadeIn 0.5s ease-in;
+    width: 100%;
+    animation: fadeIn 0.45s ease;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .city-name {
     font-size: 2rem;
+    font-weight: 700;
     color: #333;
-    margin-bottom: 10px;
-}
-
-.temperature {
-    font-size: 3.5rem;
-    color: #667eea;
-    font-weight: bold;
-    margin: 20px 0;
-}
-
-.description {
-    font-size: 1.3rem;
-    color: #555;
-    text-transform: capitalize;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
 }
 
 .weather-icon {
     width: 100px;
     height: 100px;
+}
+
+.temperature {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 10px 0;
+    line-height: 1;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    background: #f7f8ff;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-top: 10px;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+}
+
+/* ── Loading Spinner ── */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 30px;
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #ede9ff;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ── Error Message ── */
+.error-message {
+    background: #fff2f2;
+    border-left: 5px solid #e74c3c;
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: left;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+}
+
+.error-message .error-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.error-message h3 {
+    color: #c0392b;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.error-message p {
+    color: #e57373;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
