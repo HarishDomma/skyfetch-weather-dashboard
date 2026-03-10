@@ -13,6 +13,7 @@
         <h1>🌤️ SkyFetch</h1>
         <p class="tagline">Your Personal Weather Dashboard</p>
 
+        <!-- Search -->
         <div class="search-section">
             <input
                 type="text"
@@ -23,6 +24,16 @@
             <button id="search-btn">🔍 Search</button>
         </div>
 
+        <!-- Recent Searches -->
+        <div id="recent-searches-section" class="recent-searches-section">
+            <div class="recent-searches-header">
+                <h4>Recent Searches</h4>
+                <button id="clear-history-btn" class="clear-history-btn">✕ Clear</button>
+            </div>
+            <div id="recent-searches-container"></div>
+        </div>
+
+        <!-- Weather Output -->
         <div id="weather-display"></div>
     </div>
 
